@@ -24,27 +24,24 @@ conf_limit=int(config['conf_limit'])
 
 
 def ReadApiPoloniex (url):
-  resp_ok = False
-  retries = 0
+  resp_ok=False
+  retries=0
 
   while not resp_ok and retries < 10:
-
-    retries = retries + 1
-    
-    headers = { "cache-control" : "no-cache" 
+    retries=retries + 1
+    headers={ "cache-control" : "no-cache" 
               , "Connection" : "close"}
-
-    resp_api = requests.request("GET", url, headers=headers, verify=False, timeout=45)
+    resp_api=requests.request("GET", url, headers=headers, verify=False, timeout=45)
 
     if resp_api.status_code == 200:
-       resp_ok = True
+       resp_ok=True
     elif resp_api.status_code == 429 or resp_api.status_code == 500: 
        print(str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))+' -> High level of calls to Aemet API. Waiting 30 seconds and retry.')
        time.sleep(30)
     else:
        print(resp_api.status_code)
    
-  resp_api.encoding = 'latin1'      
+  resp_api.encoding='latin1'      
   return resp_api
 
 
@@ -115,7 +112,7 @@ if __name__ == '__main__':
 
     for i_curr_cod in js_currencies:
         key_curr=client.key('CurrencyList', i_curr_cod)
-        task = datastore.Entity(key=key_curr)
+        task=datastore.Entity(key=key_curr)
 
         delisted=TrueOrFalse(js_currencies[i_curr_cod]['delisted'])
         disabled=TrueOrFalse(js_currencies[i_curr_cod]['disabled'])
