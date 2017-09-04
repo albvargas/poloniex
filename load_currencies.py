@@ -60,6 +60,7 @@ def ValidCurrency (p_delisted, p_disabled, p_frozen, p_minConf ):
         return True
 
 
+
 def LoadExchanges(p_exchanges):
     df_exch_aux=pd.DataFrame()
     for i_exchange in p_exchanges:
