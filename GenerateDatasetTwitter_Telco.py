@@ -26,7 +26,7 @@ class StdOutListener(StreamListener):
 
         d_twt=json.loads(data)
         f_twi.write(str(d_twt)+"\n")
-        print (d_twt)
+        #print (d_twt)
 
     def on_error(self, status):
         print (str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")) + ' > Finished by error: '+str(status))
